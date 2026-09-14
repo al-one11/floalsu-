@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ФлоАлсу — цветы, которые говорят за вас</title>
+<meta name="description" content="ФлоАлсу — цветы и букеты в Ижевске. Крылова, 20.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root{
+  --bg:#faf7f3;
+  --dark:#292522;
+  --rose:#a9797b;
+  --sage:#8b9984;
+  --white:#fff;
+  --muted:#766f69;
+  --line:#e7dfd8;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+  line-height:1.6;
+}
+
+a{text-decoration:none;color:inherit}
+
+.container{
+  width:min(1120px,92%);
+  margin:auto;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(250,247,243,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(41,37,34,.08);
+}
+
+.nav{
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+
+.logo{
+  font-family:"Playfair Display",serif;
+  font-size:25px;
+  font-weight:700;
+}
+
+.logo span{color:var(--rose)}
+
+nav{
+  display:flex;
+  gap:28px;
+  font-size:14px;
+}
+
+nav a{color:#514b47}
+
+.nav-btn,.hero-btn,.quiz-btn{
+  background:var(--dark);
+  color:white;
+  border:0;
+  border-radius:50px;
+  padding:13px 22px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.hero{
+  padding:75px 0 65px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.eyebrow{
+  color:var(--rose);
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:17px;
+}
+
+h1,h2,h3{
+  font-family:"Playfair Display",serif;
+  font-weight:600;
+  line-height:1.1;
+}
+
+h1{
+  font-size:clamp(48px,7vw,82px);
+  letter-spacing:-2px;
+  margin-bottom:24px;
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:17px;
+  max-width:530px;
+  margin-bottom:30px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.secondary{
+  border:1px solid var(--dark);
+  border-radius:50px;
+  padding:12px 21px;
+  font-weight:600;
+}
+
+.hero-visual{
+  min-height:510px;
+  border-radius:260px 260px 25px 25px;
+  background:
+    radial-gradient(circle at 50% 30%,#ead7d0 0 14%,transparent 15%),
+    radial-gradient(circle at 30% 48%,#b98384 0 10%,transparent 11%),
+    radial-gradient(circle at 68% 48%,#d3aaa2 0 12%,transparent 13%),
+    radial-gradient(circle at 45% 68%,#f0d9cf 0 13%,transparent 14%),
+    linear-gradient(145deg,#eee2da,#c5b9aa);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-visual:after{
+  content:"ФЛОАЛСУ";
+  position:absolute;
+  bottom:35px;
+  left:35px;
+  font-family:"Playfair Display",serif;
+  font-size:38px;
+  color:white;
+  letter-spacing:3px;
+}
+
+.location{
+  margin-top:22px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+section{padding:80px 0}
+
+.section-title{
+  text-align:center;
+  font-size:45px;
+  margin-bottom:15px;
+}
+
+.section-sub{
+  text-align:center;
+  color:var(--muted);
+  max-width:620px;
+  margin:0 auto 45px;
+}
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.category{
+  min-height:180px;
+  border-radius:20px;
+  padding:25px;
+  display:flex;
+  align-items:end;
+  color:white;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(145deg,#9c7773,#d7b8af);
+}
+
+.category:nth-child(2){background:linear-gradient(145deg,#84917d,#c6cfbc)}
+.category:nth-child(3){background:linear-gradient(145deg,#a88673,#e1c7af)}
+.category:nth-child(4){background:linear-gradient(145deg,#796f76,#c2adb8)}
+
+.category h3{
+  font-size:23px;
+  position:relative;
+  z-index:2;
+}
+
+.catalog{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:22px;
+  overflow:hidden;
+}
+
+.card-img{
+  height:260px;
+  background:linear-gradient(145deg,#eee1d9,#b99590);
+  position:relative;
+}
+
+.card:nth-child(2) .card-img{background:linear-gradient(145deg,#e8d4cd,#927477)}
+.card:nth-child(3) .card-img{background:linear-gradient(145deg,#ddd8c9,#89927e)}
+.card:nth-child(4) .card-img{background:linear-gradient(145deg,#e8c7bd,#b17872)}
+.card:nth-child(5) .card-img{background:linear-gradient(145deg,#e7ddd1,#b6a284)}
+.card:nth-child(6) .card-img{background:linear-gradient(145deg,#ded4df,#89798b)}
+
+.card-body{padding:22px}
+
+.card h3{font-size:25px;margin-bottom:6px}
+
+.price{
+  color:var(--rose);
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.demo{
+  display:inline-block;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:#8a817b;
+  border:1px solid var(--line);
+  padding:4px 8px;
+  border-radius:20px;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.quiz-section{
+  background:#eee6df;
+}
+
+.quiz{
+  background:white;
+  border-radius:28px;
+  padding:40px;
+  max-width:760px;
+  margin:auto;
+  box-shadow:0 15px 50px rgba(50,40,35,.06);
+}
+
+.quiz-step{display:none}
+.quiz-step.active{display:block}
+
+.quiz h3{
+  font-size:32px;
+  margin-bottom:25px;
+}
+
+.options{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.option{
+  border:1px solid var(--line);
+  background:white;
+  padding:16px;
+  border-radius:14px;
+  cursor:pointer;
+  font-size:14px;
+  transition:.2s;
+}
+
+.option:hover{
+  border-color:var(--rose);
+  background:#fcf5f3;
+}
+
+.quiz-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:28px;
+}
+
+.quiz-count{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.quiz input{
+  width:100%;
+  border:1px solid var(--line);
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:12px;
+  font:inherit;
+}
+
+.delivery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.info{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:28px;
+}
+
+.info-icon{
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+.info h3{
+  font-size:24px;
+  margin-bottom:8px;
+}
+
+.info p{color:var(--muted);font-size:14px}
+
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:55px;
+  align-items:center;
+}
+
+.about-box{
+  min-height:390px;
+  border-radius:25px;
+  background:
+    linear-gradient(135deg,rgba(169,121,123,.25),rgba(139,153,132,.35)),
+    #ddd3c8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:"Playfair Display",serif;
+  font-size:55px;
+  color:white;
+}
+
+.about h2{
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.about p{
+  color:var(--muted);
+  margin-bottom:15px;
+}
+
+.contact{
+  background:var(--dark);
+  color:white;
+  border-radius:30px;
+  padding:55px;
+  text-align:center;
+}
+
+.contact h2{
+  font-size:48px;
+  margin-bottom:15px;
+}
+
+.contact p{
+  color:#c9c1bb;
+  margin-bottom:25px;
+}
+
+.contact .hero-btn{
+  background:white;
+  color:var(--dark);
+}
+
+footer{
+  padding:40px 0 90px;
+  color:var(--muted);
+  text-align:center;
+  font-size:13px;
+}
+
+.mobile-cta{
+  display:none;
+}
+
+@media(max-width:800px){
+  nav{display:none}
+
+  .nav-btn{padding:11px 16px;font-size:13px}
+
+  .hero{padding:45px 0}
+
+  .hero-grid,
+  .about{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .hero-visual{min-height:390px}
+
+  .categories,
+  .catalog{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .delivery-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section-title{font-size:38px}
+
+  .quiz{padding:25px}
+
+  .options{grid-template-columns:1fr}
+
+  .contact{padding:38px 20px}
+
+  .contact h2{font-size:38px}
+
+  .mobile-cta{
+    display:block;
+    position:fixed;
+    bottom:12px;
+    left:12px;
+    right:12px;
+    z-index:100;
+    background:var(--dark);
+    color:white;
+    padding:15px;
+    text-align:center;
+    border-radius:50px;
+    font-weight:700;
+    box-shadow:0 5px 25px rgba(0,0,0,.2);
+  }
+}
+
+@media(max-width:480px){
+  .categories,
+  .catalog{
+    grid-template-columns:1fr;
+  }
+
+  h1{font-size:52px}
+
+  .hero-visual{min-height:330px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">Фло<span>Алсу</span></a>
+
+    <nav>
+      <a href="#catalog">Букеты</a>
+      <a href="#delivery">Доставка</a>
+      <a href="#about">О нас</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+
+    <a href="#quiz" class="nav-btn">Заказать букет</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <div class="eyebrow">Цветочный магазин · Ижевск</div>
+
+      <h1>Цветы,<br>которые<br>говорят за вас</h1>
+
+      <p>
+        Свежие букеты и цветочные композиции
+        для важных моментов и просто для хорошего настроения.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#catalog" class="hero-btn">Выбрать букет</a>
+        <a href="#quiz" class="secondary">Подобрать букет</a>
+      </div>
+
+      <div class="location">📍 Ижевск · ул. Крылова, 20</div>
+    </div>
+
+    <div class="hero-visual"></div>
+
+  </div>
+</section>
+
+
+<section>
+  <div class="container">
+
+    <h2 class="section-title">Для любого повода</h2>
+
+    <p class="section-sub">
+      Подберём композицию под человека, событие
+      и настроение.
+    </p>
+
+    <div class="categories">
+
+      <a href="#catalog" class="category">
+        <h3>Для любимой</h3>
+      </a>
+
+      <a href="#catalog" class="category">
+        <h3>На день рождения</h3>
+      </a>
+
+      <a href="#catalog" class="category">
+        <h3>Просто так</h3>
+      </a>
+
+      <a href="#catalog" class="category">
+        <h3>Авторские букеты</h3>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="catalog">
+
+  <div class="container">
+
+    <h2 class="section-title">Популярные букеты</h2>
+
+    <p class="section-sub">
+      Примеры оформления каталога. Стоимость указана ориентировочно
+      и может быть заменена на актуальную.
+    </p>
+
+    <div class="catalog">
+
+      <article class="card">
+        <div class="card-img"></div>
+        <div class="card-body">
+          <span class="demo">пример</span>
+          <h3>Нежность</h3>
+          <div class="price">от 2 500 ₽</div>
+          <p>Нежная композиция для особенного человека.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"></div>
+        <div class="card-body">
+          <span class="demo">пример</span>
+          <h3>Любовь</h3>
+          <div class="price">от 3 500 ₽</div>
+          <p>Выразительный букет для признания в чувствах.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"></div>
+        <div class="card-body">
+          <span class="demo">пример</span>
+          <h3>Утро</h3>
+          <div class="price">от 2 800 ₽</div>
+          <p>Лёгкая композиция для хорошего настроения.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"></div>
+        <div class="card-body">
+          <span class="demo">пример</span>
+          <h3>Комплимент</h3>
+          <div class="price">от 1 800 ₽</div>
+          <p>Небольшой букет, который приятно подарить без повода.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"></div>
+        <div class="card-body">
+          <span class="demo">пример</span>
+          <h3>Яркий момент</h3>
+          <div class="price">от 3 000 ₽</div>
+          <p>Яркая композиция для праздника и важных событий.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-img"></div>
+        <div class="card-body">
+          <span class="demo">пример</span>
+          <h3>Особенный</h3>
+          <div class="price">от 4 000 ₽</div>
+          <p>Авторская композиция с индивидуальным подбором цветов.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="quiz" class="quiz-section">
+
+  <div class="container">
+
+    <h2 class="section-title">Поможем выбрать букет</h2>
+
+    <p class="section-sub">
+      Ответьте на несколько вопросов — флористу будет проще
+      подобрать подходящий вариант.
+    </p>
+
+    <div class="quiz">
+
+      <div class="quiz-step active">
+        <h3>Для кого букет?</h3>
+
+        <div class="options">
+          <button class="option">Для любимой</button>
+          <button class="option">Для близкого человека</button>
+          <button class="option">Для мамы</button>
+          <button class="option">Для коллеги</button>
+          <button class="option">Другое</button>
+        </div>
+
+        <div class="quiz-footer">
+          <span class="quiz-count">1 / 6</span>
+        </div>
+      </div>
+
+
+      <div class="quiz-step">
+        <h3>Какой повод?</h3>
+
+        <div class="options">
+          <button class="option">День рождения</button>
+          <button class="option">Свидание</button>
+          <button class="option">Праздник</button>
+          <button class="option">Признание в чувствах</button>
+          <button class="option">Просто порадовать</button>
+          <button class="option">Без повода</button>
+        </div>
+
+        <div class="quiz-footer">
+          <span class="quiz-count">2 / 6</span>
+        </div>
+      </div>
+
+
+      <div class="quiz-step">
+        <h3>Какой бюджет?</h3>
+
+        <div class="options">
+          <button class="option">До 2 000 ₽</button>
+          <button class="option">2 000–3 500 ₽</button>
+          <button class="option">3 500–5 000 ₽</button>
+          <button class="option">5 000–7 000 ₽</button>
+          <button class="option">От 7 000 ₽</button>
+        </div>
+
+        <div class="quiz-footer">
+          <span class="quiz-count">3 / 6</span>
+        </div>
+      </div>
+
+
+      <div class="quiz-step">
+        <h3>Какие цветы предпочитаете?</h3>
+
+        <div class="options">
+          <button class="option">Розы</button>
+          <button class="option">Тюльпаны</button>
+          <button class="option">Пионы</button>
+          <button class="option">Микс цветов</button>
+          <button class="option">Доверьтесь флористу</button>
+        </div>
+
+        <div class="quiz-footer">
+          <span class="quiz-count">4 / 6</span>
+        </div>
+      </div>
+
+
+      <div class="quiz-step">
+        <h3>Когда нужен букет?</h3>
+
+        <div class="options">
+          <button class="option">Сегодня</button>
+          <button class="option">Завтра</button>
+          <button class="option">В другой день</button>
+        </div>
+
+        <div class="quiz-footer">
+          <span class="quiz-count">5 / 6</span>
+        </div>
+      </div>
+
+
+      <div class="quiz-step">
+        <h3>Куда отправить ответ?</h3>
+
+        <input type="text" placeholder="Ваше имя">
+
+        <input type="tel" placeholder="Номер телефона">
+
+        <button class="quiz-btn" onclick="finishQuiz()">
+          🌷 Подобрать мне букет
+        </button>
+
+        <div class="quiz-footer">
+          <span class="quiz-count">6 / 6</span>
+        </div>
+      </div>
+
+
+      <div id="quiz-success" style="display:none;text-align:center">
+        <div style="font-size:45px;margin-bottom:15px">🌷</div>
+        <h3>Спасибо!</h3>
+        <p style="color:#766f69">
+          Заявка отправлена. Флорист свяжется с вами,
+          чтобы подобрать подходящий букет.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="delivery">
+
+  <div class="container">
+
+    <h2 class="section-title">Всё просто</h2>
+
+    <p class="section-sub">
+      От выбора букета до момента, когда он окажется
+      у получателя.
+    </p>
+
+    <div class="delivery-grid">
+
+      <div class="info">
+        <div class="info-icon">🌷</div>
+        <h3>Выбираете</h3>
+        <p>
+          Выберите готовый букет или расскажите флористу,
+          что хотите подарить.
+        </p>
+      </div>
+
+      <div class="info">
+        <div class="info-icon">💐</div>
+        <h3>Собираем</h3>
+        <p>
+          Флорист собирает композицию с учётом ваших пожеланий.
+        </p>
+      </div>
+
+      <div class="info">
+        <div class="info-icon">🚗</div>
+        <h3>Доставляем</h3>
+        <p>
+          Букет можно забрать самостоятельно или оформить доставку
+          по Ижевску.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section id="about">
+
+  <div class="container about">
+
+    <div class="about-box">
+      ФлоАлсу
+    </div>
+
+    <div>
+      <div class="eyebrow">О магазине</div>
+
+      <h2>Цветы для важных моментов</h2>
+
+      <p>
+        ФлоАлсу — цветочный магазин в Ижевске,
+        где можно подобрать букет для близкого человека,
+        праздника или просто хорошего настроения.
+      </p>
+
+      <p>
+        Здесь можно заказать готовую композицию
+        или обсудить индивидуальный вариант с флористом.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="contacts">
+
+  <div class="container">
+
+    <div class="contact">
+
+      <div class="eyebrow" style="color:#d8a5a6">
+        ФлоАлсу · Ижевск
+      </div>
+
+      <h2>Подарите эмоции</h2>
+
+      <p>
+        Крылова, 20 · Малиновая гора
+      </p>
+
+      <a class="hero-btn" href="#quiz">
+        Подобрать букет
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+
+<footer>
+  © 2026 ФлоАлсу · Концепт сайта
+</footer>
+
+<a href="#quiz" class="mobile-cta">
+  🌷 Подобрать букет
+</a>
+
+
+<script>
+
+const steps = document.querySelectorAll('.quiz-step');
+let currentStep = 0;
+
+document.querySelectorAll('.option').forEach(button => {
+
+  button.addEventListener('click', () => {
+
+    if(currentStep < steps.length - 1){
+
+      steps[currentStep].classList.remove('active');
+
+      currentStep++;
+
+      steps[currentStep].classList.add('active');
+
+    }
+
+  });
+
+});
+
+
+function finishQuiz(){
+
+  steps[currentStep].style.display='none';
+
+  document.getElementById('quiz-success').style.display='block';
+
+}
+
+</script>
+
+</body>
+</html>
